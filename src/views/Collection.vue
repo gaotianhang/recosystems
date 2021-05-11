@@ -88,6 +88,7 @@
 <script>
 import NavBar from "components/NavBar";
 import { collList, delColl } from "network/distribute";
+import { message } from "utils/data";
 export default {
   name: "Collection",
   components: { NavBar },
@@ -127,6 +128,7 @@ export default {
           loading.close();
           this.$store.dispatch("updataCount");
           this.init(this.id);
+          message("删除成功", "success");
         }, 500);
       });
     },

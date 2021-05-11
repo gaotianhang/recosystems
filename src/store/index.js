@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    currentPage: 1,
     checkboxGroup: [],
     checkboxXxlx: [],
     adviceInfo: ' <h1>高考志愿填报指导</h1>',

@@ -42,3 +42,10 @@ export function checkNum(value) {
     return !reg.test(value) ? true : false
 }
 
+
+export function checkPass(value) {
+    let reg = /^[a-zA-Z]\w{5,17}$/;
+    return reg.test(value)
+}
+
+

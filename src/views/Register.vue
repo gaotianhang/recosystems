@@ -2,7 +2,7 @@
   <div class="register">
     <div class="content">
       <div class="header">
-        <span>高考志愿推荐系统</span>
+        <span>高考数据查询系统</span>
       </div>
       <el-card>
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
@@ -56,10 +56,22 @@
 
 <script>
 import { userRegister } from "network/distribute";
-import { message } from "utils/data";
+import { message, checkPass } from "utils/data";
 export default {
   name: "Register",
   data() {
+    //密码校验
+    var checkPassword = (rule, value, callback) => {
+      if (value == "") {
+        return callback(new Error("请输入密码"));
+      } else if (!checkPass(value)) {
+        return callback(
+          new Error("密码格式为字母开头，只能包含字母、数字和下划线，6-18位")
+        );
+      } else {
+        callback();
+      }
+    };
     var checkPhone = (rule, value, callback) => {
       let reg = /^1[3456789]\d{9}$/;
       if (value == "") {
@@ -81,7 +93,7 @@ export default {
           { required: true, message: "请输入用户名", trigger: "blur" },
           { min: 3, max: 8, message: "长度在 3 到 8 个字符", trigger: "blur" },
         ],
-        pass: [{ required: true, message: "请输入密码", trigger: "blur" }],
+        pass: [{ validator: checkPassword, trigger: "blur" }],
         phone: [{ validator: checkPhone, trigger: "blur" }],
       },
     };

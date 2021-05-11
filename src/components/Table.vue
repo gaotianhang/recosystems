@@ -132,10 +132,13 @@ export default {
     table() {
       return this.$store.state.tableData;
     },
+    currentPage() {
+      return this.$store.state.currentPage;
+    },
   },
   data() {
     return {
-      currentPage: 1, //默认显示页面为1
+      // currentPage: 1, 默认显示页面为1
       pagesize: 5, //    每页的数据条数
       value: [], //存放select连级内容
       ischange: "", //placeholder内容
@@ -154,7 +157,7 @@ export default {
     },
     //点击第几页
     handleCurrentChange: function (currentPage) {
-      this.currentPage = currentPage;
+      this.$store.state.currentPage = currentPage;
     },
     //查询详细信息
     details(id) {

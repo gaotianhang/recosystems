@@ -17,11 +17,27 @@ export function userRegister(data) {
     })
 }
 
+//后台用户管理
 export function userlist() {
     return request({
         url: '/userlist',
         method: 'get',
 
+    })
+}
+
+export function userByPhone(phone) {
+    return request({
+        url: `/userByPhone/${phone}`,
+        method: 'get',
+    })
+}
+
+export function updateUser(data) {
+    return request({
+        url: '/update',
+        method: 'put',
+        data
     })
 }
 
@@ -34,7 +50,7 @@ export function delUser(phone) {
 }
 
 
-//收藏
+//志愿收藏
 export function addColl(data) {
     return request({
         url: '/addColl',
@@ -61,7 +77,7 @@ export function delColl(data) {
 
 
 
-//查询
+//志愿详细信息查询
 export function infoDetails(id) {
     return request({
         url: '/details/' + id,
@@ -69,10 +85,31 @@ export function infoDetails(id) {
     })
 }
 
-//查询
+// 点击校徽查询
 export function infoSchool(id) {
     return request({
         url: '/schoolInfo/' + id,
+        method: 'get',
+    })
+}
+
+// 填报指南院校查询
+export function school211() {
+    return request({
+        url: '/school211',
+        method: 'get',
+    })
+}
+export function school985() {
+    return request({
+        url: '/school985',
+        method: 'get',
+    })
+}
+
+export function schoolByName(xxmc) {
+    return request({
+        url: '/schoolByName/' + xxmc,
         method: 'get',
     })
 }
@@ -84,22 +121,7 @@ export function infoAdvice(id) {
     })
 }
 
-export function searchScore(data) {
-    return request({
-        url: '/score',
-        method: 'post',
-        data
-    })
-}
-
-export function searchNum(data) {
-    return request({
-        url: '/num',
-        method: 'post',
-        data
-    })
-}
-
+// 志愿推荐
 export function searchGroup(data) {
     return request({
         url: '/group',
@@ -107,3 +129,52 @@ export function searchGroup(data) {
         data
     })
 }
+
+//Echarts
+
+export function getRankData(yxmc) {
+    return request({
+        url: '/selectEchartsHank/' + yxmc,
+        method: 'get',
+    })
+}
+
+//富文本编辑器
+export function getTitle() {
+    return request({
+        url: '/findTitle',
+        method: 'get',
+    })
+}
+
+export function getAllText(id) {
+    return request({
+        url: `/selectAdvice/${id}`,
+        method: 'get',
+    })
+}
+
+export function addText(data) {
+    return request({
+        url: `/insertText`,
+        method: 'post',
+        data
+    })
+}
+
+export function updateText(data) {
+    return request({
+        url: `/updateText`,
+        method: 'put',
+        data
+    })
+}
+
+
+export function deleteText(id) {
+    return request({
+        url: `/deleteText/${id}`,
+        method: 'delete',
+    })
+}
+

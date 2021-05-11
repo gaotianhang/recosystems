@@ -20,6 +20,7 @@ const Collection = () => import('views/Collection.vue')
 const Details = () => import('views/Details.vue')
 const About = () => import('views/About.vue')
 const Admin = () => import('views/Admin.vue')
+const Tinymce = () => import('views/Tinymce.vue')
 
 const routes = [
   {
@@ -74,6 +75,15 @@ const routes = [
     component: Admin,
     meta: {
       title: '后台',
+      isAuthRequired: true
+    },
+  },
+  {
+    path: '/tinymce',
+    name: 'Tinymce',
+    component: Tinymce,
+    meta: {
+      title: '文章编辑',
       isAuthRequired: true
     },
   },

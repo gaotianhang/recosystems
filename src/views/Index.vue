@@ -54,6 +54,7 @@ export default {
   },
   methods: {
     changeData(val) {
+      this.$store.state.currentPage = 1;
       this.$store.commit("changeActive", val.name);
       let str = this.$store.state.totalData;
       if (val.index == 0) {

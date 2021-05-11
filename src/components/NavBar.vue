@@ -2,7 +2,7 @@
   <div class="navbar">
     <div class="default">
       <slot>
-        <span @click="$router.push('/index')">天津高考志愿推荐平台</span>
+        <span @click="$router.push('/index')">高考数据查询系统</span>
       </slot>
     </div>
     <div class="right">

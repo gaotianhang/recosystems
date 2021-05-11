@@ -67,10 +67,22 @@
               <el-menu-item index="4-7">结合考生实际情况报志愿</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+          <el-submenu index="5">
+            <template slot="title">
+              <i class="el-icon-s-promotion"></i>
+              <span>院校信息查询</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="5-1">详细信息查询</el-menu-item>
+              <el-menu-item index="5-2">去年录取人数查询</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
         </el-menu>
       </div>
       <div class="con_right">
-        <Advice></Advice>
+        <Advice v-if="state1"></Advice>
+        <SchoolInfo v-if="state2" />
+        <ManagerEcharsRank v-if="state3" />
       </div>
     </div>
   </div>
@@ -79,17 +91,37 @@
 import { infoAdvice } from "network/distribute";
 import NavBar from "components/NavBar";
 import Advice from "components/Advice";
+import ManagerEcharsRank from "components/ManagerEcharsRank";
+import SchoolInfo from "components/SchoolInfo";
 export default {
   name: "About",
-  components: { NavBar, Advice },
+  components: { NavBar, Advice, SchoolInfo, ManagerEcharsRank },
   data() {
-    return {};
+    return {
+      state1: true,
+      state2: false,
+      state3: false,
+    };
   },
   methods: {
     getInfo(val) {
-      infoAdvice(val).then((res) => {
-        this.$store.commit("changeAdvices", res.data.data);
-      });
+      console.log(val);
+      if (val == "5-1") {
+        this.state1 = false;
+        this.state2 = true;
+        this.state3 = false;
+      } else if (val == "5-2") {
+        this.state1 = false;
+        this.state2 = false;
+        this.state3 = true;
+      } else {
+        this.state1 = true;
+        this.state2 = false;
+        this.state3 = false;
+        infoAdvice(val).then((res) => {
+          this.$store.commit("changeAdvices", res.data.data);
+        });
+      }
     },
   },
 };
@@ -101,7 +133,7 @@ export default {
     .con_left {
       width: 20%;
       .el-menu {
-        height: 100vh;
+        height: 93vh;
       }
     }
     .con_right {

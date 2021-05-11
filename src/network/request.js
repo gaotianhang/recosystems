@@ -6,8 +6,6 @@ export function request(config) {
     })
     //请求拦截
     instance.interceptors.request.use(config => {
-
-
         return config;
     }, err => {
 
@@ -17,8 +15,6 @@ export function request(config) {
     instance.interceptors.response.use(res => {
         return res;
     }, err => {
-
-
 
     })
 
