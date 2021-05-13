@@ -104,14 +104,12 @@ export default {
     //每页下拉显示数据
     handleSizeChange: function (size) {
       this.pagesize = size;
-      /*console.log(this.pagesize) */
     },
     //点击第几页
     handleCurrentChange: function (currentPage) {
       this.currentPage = currentPage;
-      /*console.log(this.currentPage) */
     },
-    //移除单行数据
+    //移除数据
     deleteRow(val) {
       let data = {
         id: this.id,
@@ -122,7 +120,6 @@ export default {
         text: "加载中",
         spinner: "el-icon-loading",
       });
-
       delColl(data).then((res) => {
         setTimeout(() => {
           loading.close();
@@ -139,14 +136,13 @@ export default {
         query: { id },
       });
     },
-
     init(id) {
       collList(id).then((res) => {
         this.table = res.data.data;
       });
     },
   },
-  mounted() {
+  created() {
     this.id = localStorage.getItem("id");
     this.init(this.id);
   },

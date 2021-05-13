@@ -3,7 +3,6 @@
     <nav-bar> </nav-bar>
     <div class="container">
       <h1 class="page-header">详细信息</h1>
-      <!-- <img :src="info.logo" alt="院校校徽" /> -->
       <ul class="list-group">
         <li class="list-group-item">
           <span>成绩</span><span>{{ info.tzcj }}</span>

@@ -14,21 +14,20 @@
               autocomplete="off"
             />
           </el-form-item>
-          <el-form-item prop="pass">
-            <el-input
-              type="password"
-              v-model="ruleForm.pass"
-              placeholder="请输入密码"
-              autocomplete="off"
-            />
-          </el-form-item>
-
           <el-form-item prop="phone">
             <el-input
               type="text"
               v-model="ruleForm.phone"
               maxlength="11"
               placeholder="请输入手机号"
+              autocomplete="off"
+            />
+          </el-form-item>
+          <el-form-item prop="pass">
+            <el-input
+              type="password"
+              v-model="ruleForm.pass"
+              placeholder="请输入密码"
               autocomplete="off"
             />
           </el-form-item>
@@ -99,6 +98,7 @@ export default {
     };
   },
   methods: {
+    //注册用户
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {

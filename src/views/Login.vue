@@ -166,7 +166,7 @@ export default {
       });
     },
   },
-  mounted() {
+  created() {
     this.refreshCode();
   },
 };

@@ -3,7 +3,7 @@
     <nav-bar>
       <template>高考数据查询系统后台管理</template>
       <template v-slot:right>
-        <span v-if="phone != ''">{{ phone }}</span>
+        <span>{{ $store.state.phone }}</span>
         <el-button
           type="text"
           icon="el-icon-refresh-right"
@@ -87,7 +87,6 @@ export default {
   },
   data() {
     return {
-      phone: localStorage.getItem("phone"),
       options: [],
       textTitle: "", //input
       title: "", //select
@@ -165,9 +164,11 @@ export default {
       this.options = data.data;
     },
   },
-  mounted() {
-    tinymce.init({});
+  created() {
     this.getData();
+    this.$nextTick(() => {
+      tinymce.init({});
+    });
   },
 };
 </script>

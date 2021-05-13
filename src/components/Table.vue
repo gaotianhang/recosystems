@@ -138,7 +138,6 @@ export default {
   },
   data() {
     return {
-      // currentPage: 1, 默认显示页面为1
       pagesize: 5, //    每页的数据条数
       value: [], //存放select连级内容
       ischange: "", //placeholder内容
@@ -147,10 +146,7 @@ export default {
       schoolInfo: {},
     };
   },
-
-  mounted() {},
   methods: {
-    //=====================处理表格================================
     //每页下拉显示数据
     handleSizeChange: function (size) {
       this.pagesize = size;

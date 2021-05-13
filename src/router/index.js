@@ -104,18 +104,16 @@ const router = new VueRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.meta.isAuthRequired == true && store.state.isLogin == false) {
-//     message('请先登录', 'error')
-//     return next('/')
-//   } else {
-//     next();
-//     document.title = to.meta.title;
-//   }
-//   next();
-//   document.title = to.meta.title;
-
-
-// })
+router.beforeEach((to, from, next) => {
+  if (to.meta.isAuthRequired == true && store.state.isLogin == false) {
+    message('请先登录', 'error')
+    return next('/')
+  } else {
+    next();
+    document.title = to.meta.title;
+  }
+  next();
+  document.title = to.meta.title;
+})
 
 export default router;

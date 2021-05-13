@@ -53,22 +53,20 @@ export default {
     return {};
   },
   methods: {
+    // tabs切换
     changeData(val) {
       this.$store.state.currentPage = 1;
       this.$store.commit("changeActive", val.name);
       let str = this.$store.state.totalData;
       if (val.index == 0) {
         this.$store.commit("addSearch", str.top);
-        // console.log(str.top);
       } else if (val.index == 1) {
         this.$store.commit("addSearch", str.middle);
-        // console.log(str.middle);
       } else {
         this.$store.commit("addSearch", str.bottom);
-        // console.log(str.bottom);
       }
     },
-    //====================退出=====================
+    //退出
     out() {
       this.$confirm("此操作将并退出用户 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -80,12 +78,11 @@ export default {
           localStorage.removeItem("phone");
           this.$store.commit("changeisLogin", false);
           this.$router.replace({ path: "/" });
-          // location.reload();
         })
         .catch(() => {});
     },
   },
-  mounted() {
+  created() {
     this.$store.dispatch("updataCount");
   },
 };
